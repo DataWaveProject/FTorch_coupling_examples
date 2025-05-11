@@ -5,17 +5,11 @@ This example provides a complete demonstration of how to use FTorch to run a tra
 
 ## Description
 
-A Python file `fno1d.py` is provided that defines a typical FNO 'net' which is trained on a sampled sine wave. The task is to predict the 
-
-It is then 
-
-trained using `fno1d_train.py` that takes an input
-vector of length 5 and applies a single `Linear` layer to multiply it by 2.
+A Python file `fno1d.py` is provided that defines a typical FNO 'net' which is trained on a sampled sine wave. The task is to predict the sin wave `sin(2πx)` given an input of some dummy values and a grid of x-positions on `[0, 1]`. 
 
 A modified version of the `pt2ts.py` tool saves this simple net to TorchScript.
 
-A series of files `fno1d_infer_<LANG>` then bind from other languages to run the
-TorchScript model in inference mode.
+A series of files `fno1d_infer_<LANG>` then bind from other languages to run the TorchScript model in inference mode.
 
 ## Dependencies
 
@@ -43,13 +37,12 @@ python3 fno1d_train.py
 This instantiates the net defined in `fno1d.py` and trains, validates and outputs the network as either a `state_dict` or `TorchScript`. The `state_dict` option is compatible with `pt2ts.py`. 
 
 The network expects inputs of the following form:
-This simple case is not meant to challenge the FNO, but to validate the infrastructure:
 
 - `input_tensor`: Dummy input, filled with zeros. Shape `(batch, x, 1)`.
 - `grid_tensor`: x-positions on `[0, 1]`. Shape `(batch, x, 1)`.
 - `target_tensor`: True values `sin(2πx)`. Shape `(batch, x, 1)`.
 
-The FNO is thus trained to map a constant zero function (plus optional grid input) to a sine wave.
+The FNO is thus trained to map a constant zero function (plus optional grid input) to a sine wave.  This simple case is not meant to challenge the FNO, but to validate the infrastructure:
 
 In many FNO implementations, especially those without fixed spatial encodings, the model input is formed by **concatenating the input function and positional grid** along the last (channel) dimension:
 ```
@@ -104,7 +97,7 @@ However, to do this you will need to modify `Makefile` to link to and include yo
 installation of FTorch as described in the main documentation. Also check that the compiler is the same as the one you built the Library with.
 ```
 make
-./simplenet_infer_fortran saved_simplenet_model_cpu.pt
+./fno1d_infer_fortran saved_fno1d_model_cpu.pt
 ```
 
 You will also likely need to add the location of the dynamic library files
