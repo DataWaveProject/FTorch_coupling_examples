@@ -5,6 +5,11 @@ This module defines:
 - FNO1d: A Fourier Neural Operator model built with multiple spectral
 convolution blocks.
 """
+# Architecture and test setup based on:
+# Pahlavan et al. (2024) – https://arxiv.org/abs/2407.05224
+# Code adapted from: https://github.com/HamidPahlavan/Nonlocality
+# Copyright (c) 2024 Hamid Pahlavan, used under MIT License
+
 
 from typing import Any, List, Tuple
 
