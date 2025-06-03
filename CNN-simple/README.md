@@ -30,7 +30,7 @@ You can check that everything is working by running `cnn-simple.py`:
 ```
 python3 cnn-simple.py
 ```
-This instantiates the CNN` which consists of a couple of 2D convolutions, trains it and then outputs the network in the `TorchScript` format. The kernel essentially learns to act like an identity filter (1 in middle, 0 elsewhere in 3 x 3 ) and the bias will converge to 1. 
+This instantiates the CNN which consists of a couple of 2D convolutions, trains it and then outputs the network in the `TorchScript` format. The kernel essentially learns to act like an identity filter (1 in middle, 0 elsewhere in 3 x 3 ) and the bias will converge to 1. 
 
 The network expects inputs of the following form:
 
