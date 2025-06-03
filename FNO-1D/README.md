@@ -1,4 +1,4 @@
-# Example 1 - FNO1d
+# Example 2 - FNO1d
 
 This example provides a complete demonstration of how to use FTorch to run a trained Fourier Neural Operator network using Fortran. 
 
